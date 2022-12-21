@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 export const ListContacts = () => {
   const { data: contacts = [] } = useGetContactsQuery();
 
+  //useMemo
   const filterValue = useSelector(selectFilterValue);
   const normalyzeFilter = filterValue.toLowerCase();
 
