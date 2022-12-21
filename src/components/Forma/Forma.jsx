@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { useAddContactMutation } from 'redux/contactsSlice';
+import {
+  useGetContactsQuery,
+  useAddContactMutation,
+} from 'redux/contactsSlice';
 import { Form, Label, Input, Button } from './FormaStyled';
 
 export const Forma = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const [addContact, { data: contacts = [], error }] = useAddContactMutation();
+  const { data: contacts } = useGetContactsQuery();
+  const [addContact, { error }] = useAddContactMutation();
 
   const handleChangeInput = event => {
     const { name, value } = event.target;
